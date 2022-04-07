@@ -1,0 +1,35 @@
+set timezone to 'UTC';
+SET DateStyle='European';
+select * from transaction;
+
+Alter table transaction
+Add week Integer;
+Update transaction
+set week = DATE_PART('week', timestamp);
+ 
+Alter table transaction
+Add amt_gbp Numeric(10,2);
+Update transaction 
+set amt_gbp = ROUND((transaction.value/exchange_rate.rate),2)
+from exchange_rate
+where  transaction.currency = exchange_rate.currency;
+
+--report 1
+select week,country,currency,sum(amt_gbp) as Total,count(distinct transaction_id)
+FROM transaction 
+group by week,country,currency;
+
+--report 2
+select transaction_id,country,amt_gbp
+from (	select transaction_id,country,amt_gbp,Row_number() over( order by amt_gbp desc) as r
+		from transaction
+		group by country ,transaction_id,country,amt_gbp
+		order by r asc
+		limit 5) s;
+
+
+
+
+	
+	
+	
