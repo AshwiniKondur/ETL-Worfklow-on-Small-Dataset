@@ -1,5 +1,5 @@
 <div style="padding: 0; margin: 0; line-height: 1.2;">
-    <h1 style="margin: 0;"><b><font color='blue'>Performing ETL on Small Data</font></b></h1>
+    <h1 style="margin: 0;"><b><font color='blue'>Performing ETL on Small Dataset</font></b></h1>
     Extracting (data from CSV and API), Transforming (Cleaning and Formatting the data) and Loading (Ingesting it into the database).</p>
     <p style="margin: 0;"><b>1. Exploratory Analysis</b><br>
     <p style="margin: 0;"><b>2. Connecting to the Database</b><br>
